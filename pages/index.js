@@ -1,30 +1,30 @@
-import React from 'react'
-import Head from '../components/head'
-import fetch from 'isomorphic-unfetch'
+import React, {Component} from 'react'
+import {connect} from 'react-redux'
 
-import Post from '../components/post'
+import {loadData, startClock, tickClock} from '../action/actionCreator'
+import Page from '../components/page'
 
-class Home extends React.Component{
-	static async getInitialProps () {
-		const res = await fetch('https://jsonplaceholder.typicode.com/posts?_page=1')
-		const postList = await res.json()
-
-		return {
-			postList
+class Index extends Component{
+	static async getInitialProps (props) {
+		const { store, isServer } = props.ctx
+		store.dispatch(tickClock(isServer))
+		console.log(props)
+	
+		if (!store.getState().placeholderData) {
+		  	store.dispatch(loadData())
 		}
+	
+		return { isServer }
 	}
+	componentDidMount () {
+		this.props.dispatch(startClock())
+	}
+
 	render () {
 		return (
-			<main>
-				<Head/>
-				<h1>List of posts</h1>
-
-				<section>
-					{this.props.postList.map(post => <Post {...post} key={post.id} />)}
-				</section>
-			</main>
-		)  
+			<Page title='Index Page' linkTo='/other' NavigateTo='Other Page' />
+		)
 	}
 }
 
-export default Home
+export default connect()(Index)

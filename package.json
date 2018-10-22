@@ -7,10 +7,17 @@
     "export": "next export"
   },
   "dependencies": {
+    "es6-promise": "^4.2.5",
     "express": "^4.16.4",
     "isomorphic-unfetch": "^3.0.0",
     "next": "7.0.2",
+    "next-redux-saga": "^3.0.0",
+    "next-redux-wrapper": "^2.0.0",
     "react": "16.5.2",
-    "react-dom": "16.5.2"
+    "react-dom": "16.5.2",
+    "react-redux": "^5.0.7",
+    "redux": "^4.0.1",
+    "redux-devtools-extension": "^2.13.5",
+    "redux-saga": "^0.16.2"
   }
 }
