@@ -1,6 +1,14 @@
 const fetch = require('isomorphic-unfetch')
+/* eslint-disable */
+const withCss = require('@zeit/next-css')
 
-module.exports = {
+if (typeof require !== 'undefined') {
+  require.extensions['.css'] = (file) => {}
+}
+
+module.exports = withCss()
+
+// module.exports = {
   // webpack: config => {
   //   // Fixes npm packages that depend on `fs` module
   //   config.node = {
@@ -10,21 +18,21 @@ module.exports = {
   //   return config
   // }
 
-	async exportPathMap () {
-		const response = await fetch('https://jsonplaceholder.typicode.com/posts?_page=1')
-		const postList = await response.json()
+// 	async exportPathMap () {
+// 		const response = await fetch('https://jsonplaceholder.typicode.com/posts?_page=1')
+// 		const postList = await response.json()
 
-		const pages = postList.reduce((pages, post) => Object.assign({}, pages, {
-				[`/post/${post.id}`]: {
-					page: '/post',
-					query: { id: post.id }
-				}
-			}),
-			{}
-		)
+// 		const pages = postList.reduce((pages, post) => Object.assign({}, pages, {
+// 				[`/post/${post.id}`]: {
+// 					page: '/post',
+// 					query: { id: post.id }
+// 				}
+// 			}),
+// 			{}
+// 		)
 
-		return Object.assign({}, pages, {
-			'/': { page: '/' }
-		})
-	}
-}
+// 		return Object.assign({}, pages, {
+// 			'/': { page: '/' }
+// 		})
+// 	}
+// }
