@@ -16,7 +16,11 @@ class Other extends React.Component {
     }
 
     render () {
-        return <Page title='Other Page' linkTo='/' NavigateTo='Index Page' />
+        return (
+            <section>
+                <Page title='Other Page' linkTo='/' NavigateTo='Index Page' />
+            </section>
+        )
     }
 }
 

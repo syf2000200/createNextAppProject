@@ -22,7 +22,9 @@ class Index extends Component{
 
 	render () {
 		return (
-			<Page title='Index Page' linkTo='/other' NavigateTo='Other Page' />
+			<section>
+				<Page title='Index Page' linkTo='/other' NavigateTo='other page'/>
+			</section>
 		)
 	}
 }

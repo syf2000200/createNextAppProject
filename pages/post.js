@@ -5,6 +5,7 @@ import fetch from 'isomorphic-unfetch'
 
 export default class extends React.Component{
     static async getInitialProps ({ query }) {
+        console.log(query)
         const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${query.id}`)
         const post = await res.json()
 

@@ -5,16 +5,49 @@ import Counter from './counter'
 import Clock from './clock'
 
 import { List } from 'antd'
-
-const data = [
-    'Racing car sprays burning fuel into crowd.',
-    'Japanese princess to wed commoner.',
-    'Australian walks 100km after outback crash.',
-    'Man charged over missing wedding girl.',
-    'Los Angeles battles huge wildfires.',
-]
+import format from 'date-fns/format'
+import parse from 'date-fns/parse'
+import { Line } from 'react-chartjs-2'
 
 function Page ({error, lastUpdate, light, linkTo, NavigateTo, placeholderData, title}) {
+    const data = [
+        {
+            time: 1540347324,
+            close: 10
+        },
+        {
+            time: 1540433724,
+            close: 20
+        }
+    ]
+    const options = {
+        legend: { display: false }
+    }
+    const chartData = {
+        labels: data.map(item => format(parse(item.time * 1000), 'MMM D H:m A')),
+        datasets: [
+            {
+                fill: false,
+                lineTension: 0.3,
+                backgroundColor: '#209cee',
+                borderColor: '#209cee',
+                borderCapStyle: 'butt',
+                borderDash: [],
+                borderDashOffset: 0.0,
+                borderJoinStyle: 'miter',
+                pointBorderColor: '#209cee',
+                pointBackgroundColor: '#209cee',
+                pointBorderWidth: 1,
+                pointHoverRadius: 5,
+                pointHoverBackgroundColor: '#209cee',
+                pointHoverBorderColor: 'rgba(220,220,220,1)',
+                pointHoverBorderWidth: 2,
+                pointRadius: 1,
+                pointHitRadius: 10,
+                data: data.map(item => item.close)
+            }
+        ]
+    }
     return (
         <div>
             <h1>
@@ -22,12 +55,10 @@ function Page ({error, lastUpdate, light, linkTo, NavigateTo, placeholderData, t
             </h1>
             <Clock lastUpdate={lastUpdate} light={light} />
             <Counter />
-            <nav>
-                <Link href={linkTo}>
-                    <a>Navigate: {NavigateTo}</a>
-                </Link>
-            </nav>
-            
+            <Link href={linkTo}>
+                <a>{NavigateTo}</a>
+            </Link>
+            <Line data={chartData} options={options} />
             {placeholderData &&
                 <List
                     size="small"
@@ -35,7 +66,13 @@ function Page ({error, lastUpdate, light, linkTo, NavigateTo, placeholderData, t
                     footer={<div>Footer</div>}
                     bordered
                     dataSource={placeholderData}
-                    renderItem={item => (<List.Item>{item.name}</List.Item>)}
+                    renderItem={item => (
+                        <List.Item>
+                            <Link href={{ pathname: '/post', query: { id: item.id } }} as={`/post/${item.id}`}>
+                                <a>{item.name}</a>
+                            </Link>
+                        </List.Item>
+                    )}
                 />}
             {error &&
                 <p style={{color: 'red'}}>

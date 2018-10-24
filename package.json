@@ -1,15 +1,17 @@
 {
   "name": "create-next-example-app",
   "scripts": {
-    "dev": "next",
+    "dev": "node server.js",
     "build": "next build",
-    "start": "next start",
+    "start": "NODE_ENV=production node server.js",
     "export": "next export"
   },
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
     "antd": "^3.10.2",
     "babel-plugin-import": "^1.10.0",
+    "chart.js": "^2.7.3",
+    "date-fns": "^1.29.0",
     "es6-promise": "^4.2.5",
     "express": "^4.16.4",
     "isomorphic-unfetch": "^3.0.0",
@@ -17,6 +19,7 @@
     "next-redux-saga": "^3.0.0",
     "next-redux-wrapper": "^2.0.0",
     "react": "16.5.2",
+    "react-chartjs-2": "^2.7.4",
     "react-dom": "16.5.2",
     "react-redux": "^5.0.7",
     "redux": "^4.0.1",

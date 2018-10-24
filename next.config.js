@@ -6,17 +6,26 @@ if (typeof require !== 'undefined') {
   require.extensions['.css'] = (file) => {}
 }
 
-module.exports = withCss()
+module.exports = withCss({
+	webpack: config => {
+		// Fixes npm packages that depend on `fs` module
+		config.node = {
+		  fs: 'empty'
+		}
+	
+		return config
+	}
+})
 
 // module.exports = {
-  // webpack: config => {
-  //   // Fixes npm packages that depend on `fs` module
-  //   config.node = {
-  //     fs: 'empty'
-  //   }
+//   webpack: config => {
+//     // Fixes npm packages that depend on `fs` module
+//     config.node = {
+//       fs: 'empty'
+//     }
 
-  //   return config
-  // }
+//     return config
+//   }
 
 // 	async exportPathMap () {
 // 		const response = await fetch('https://jsonplaceholder.typicode.com/posts?_page=1')
