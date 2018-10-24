@@ -4,10 +4,12 @@ import {connect} from 'react-redux'
 import Counter from './counter'
 import Clock from './clock'
 
-import { List } from 'antd'
+import { List, Layout } from 'antd'
 import format from 'date-fns/format'
 import parse from 'date-fns/parse'
 import { Line } from 'react-chartjs-2'
+
+const { Header, Footer, Sider, Content } = Layout
 
 function Page ({error, lastUpdate, light, linkTo, NavigateTo, placeholderData, title}) {
     const data = [
@@ -49,36 +51,46 @@ function Page ({error, lastUpdate, light, linkTo, NavigateTo, placeholderData, t
         ]
     }
     return (
-        <div>
-            <h1>
-                {title}
-            </h1>
-            <Clock lastUpdate={lastUpdate} light={light} />
-            <Counter />
-            <Link href={linkTo}>
-                <a>{NavigateTo}</a>
-            </Link>
-            <Line data={chartData} options={options} />
-            {placeholderData &&
-                <List
-                    size="small"
-                    header={<div>Header</div>}
-                    footer={<div>Footer</div>}
-                    bordered
-                    dataSource={placeholderData}
-                    renderItem={item => (
-                        <List.Item>
-                            <Link href={{ pathname: '/post', query: { id: item.id } }} as={`/post/${item.id}`}>
-                                <a>{item.name}</a>
-                            </Link>
-                        </List.Item>
-                    )}
-                />}
-            {error &&
-                <p style={{color: 'red'}}>
-                    Error: {error.message}
-                </p>}
-        </div>
+        <Layout>
+            <Header>Header</Header>
+            <Layout>
+                <Sider>
+                    {placeholderData &&
+                        <List
+                            size="small"
+                            header={<div>Header</div>}
+                            footer={<div>Footer</div>}
+                            bordered
+                            dataSource={placeholderData}
+                            renderItem={item => (
+                                <List.Item>
+                                    <Link href={{ pathname: '/post', query: { id: item.id } }} as={`/post/${item.id}`}>
+                                        <a>{item.name}</a>
+                                    </Link>
+                                </List.Item>
+                            )}
+                        />}
+                    {error &&
+                        <p style={{color: 'red'}}>
+                            Error: {error.message}
+                        </p>}
+                </Sider>
+                <Content>
+                    <div className="warp">
+                        <h1>
+                            {title}
+                        </h1>
+                        <Clock lastUpdate={lastUpdate} light={light} />
+                        <Counter />
+                        <Link href={linkTo}>
+                            <a>{NavigateTo}</a>
+                        </Link>
+                        <Line data={chartData} options={options} />
+                    </div>
+                </Content>
+            </Layout>
+            <Footer>Footer</Footer>
+        </Layout>
     )
 }
 
