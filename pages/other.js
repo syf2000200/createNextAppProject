@@ -1,3 +1,10 @@
+/**
+ * @author: sunyf-c@glodon.com
+ * @description: 
+ * @summary:
+ * @todo: 2018/10/22
+ */
+
 import React from 'react'
 import {connect} from 'react-redux'
 
@@ -18,7 +25,7 @@ class Other extends React.Component {
     render () {
         return (
             <section>
-                <Page title='Other Page' linkTo='/' NavigateTo='Index Page' />
+                <Page title='Other Page'/>
             </section>
         )
     }

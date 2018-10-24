@@ -1,3 +1,10 @@
+/**
+ * @author: sunyf-c@glodon.com
+ * @description: 
+ * @summary:
+ * @todo: 2018/10/19
+ */
+
 export const actionTypes = {
     FAILURE: 'FAILURE',
     INCREMENT: 'INCREMENT',

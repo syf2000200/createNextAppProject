@@ -1,3 +1,10 @@
+/**
+ * @author: sunyf-c@glodon.com
+ * @description: 
+ * @summary:
+ * @todo: 2018/10/22
+ */
+
 import App, { Container } from 'next/app'
 import React from 'react'
 import { Provider } from 'react-redux'

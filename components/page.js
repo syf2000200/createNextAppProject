@@ -1,17 +1,26 @@
+/**
+ * @author: sunyf-c@glodon.com
+ * @description: 页面组件
+ * @summary: （可以续拆分优化）
+ * @todo: 2018/10/24
+ */
+
 import Link from 'next/link'
 import {connect} from 'react-redux'
 
+import MyHeader from './header'
+import LeftSide from './leftSide'
 import Counter from './counter'
 import Clock from './clock'
 
-import { List, Layout } from 'antd'
+import { Layout } from 'antd'
 import format from 'date-fns/format'
 import parse from 'date-fns/parse'
 import { Line } from 'react-chartjs-2'
 
-const { Header, Footer, Sider, Content } = Layout
+const { Header, Footer, Content } = Layout
 
-function Page ({error, lastUpdate, light, linkTo, NavigateTo, placeholderData, title}) {
+const Page = ({lastUpdate, light, placeholderData, title}) => {
     console.log(placeholderData)
     const data = [
         {
@@ -55,29 +64,11 @@ function Page ({error, lastUpdate, light, linkTo, NavigateTo, placeholderData, t
     }
     return (
         <Layout>
-            <Header>Header</Header>
+            <Header>
+                <MyHeader/>
+            </Header>
             <Layout>
-                <Sider>
-                    {placeholderData &&
-                        <List
-                            size="small"
-                            header={<div>Header</div>}
-                            footer={<div>Footer</div>}
-                            bordered
-                            dataSource={placeholderData}
-                            renderItem={item => (
-                                <List.Item>
-                                    <Link href={{ pathname: '/post', query: { id: item.id } }} as={`/post/${item.id}`}>
-                                        <a>{item.name}</a>
-                                    </Link>
-                                </List.Item>
-                            )}
-                        />}
-                    {error &&
-                        <p style={{color: 'red'}}>
-                            Error: {error.message}
-                        </p>}
-                </Sider>
+                <LeftSide/>
                 <Content>
                     <div className="warp">
                         <h1>
@@ -85,9 +76,6 @@ function Page ({error, lastUpdate, light, linkTo, NavigateTo, placeholderData, t
                         </h1>
                         <Clock lastUpdate={lastUpdate} light={light} />
                         <Counter />
-                        <Link href={linkTo}>
-                            <a>{NavigateTo}</a>
-                        </Link>
                         <Line data={chartData} options={options} />
                     </div>
                 </Content>

@@ -1,3 +1,10 @@
+/**
+ * @author: sunyf-c@glodon.com
+ * @description: 
+ * @summary:
+ * @todo: 2018/10/24
+ */
+
 import React from 'react'
 
 const pad = n => (n < 10 ? `0${n}` : n)
@@ -9,7 +16,7 @@ const format = t => {
     return `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`
 }
 
-function Clock ({lastUpdate, light}) {
+const Clock = ({lastUpdate, light}) => {
     return (
         <div className={light ? 'light' : ''}>
             {format(new Date(lastUpdate))}

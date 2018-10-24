@@ -1,3 +1,10 @@
+/**
+ * @author: sunyf-c@glodon.com
+ * @description: 页头组件
+ * @summary:
+ * @todo: 2018/10/24
+ */
+
 import React from 'react'
 import NextHead from 'next/head'
 import { string } from 'prop-types'

@@ -1,3 +1,10 @@
+/**
+ * @author: sunyf-c@glodon.com
+ * @description: 
+ * @summary:
+ * @todo: 2018/10/19
+ */
+
 import {delay} from 'redux-saga'
 import {all, call, put, take, takeLatest} from 'redux-saga/effects'
 import es6promise from 'es6-promise'

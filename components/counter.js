@@ -1,3 +1,10 @@
+/**
+ * @author: sunyf-c@glodon.com
+ * @description: 
+ * @summary:
+ * @todo: 2018/10/24
+ */
+
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 
