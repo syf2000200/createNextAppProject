@@ -12,6 +12,7 @@ import { Line } from 'react-chartjs-2'
 const { Header, Footer, Sider, Content } = Layout
 
 function Page ({error, lastUpdate, light, linkTo, NavigateTo, placeholderData, title}) {
+    console.log(placeholderData)
     const data = [
         {
             time: 1540347324,
@@ -22,9 +23,11 @@ function Page ({error, lastUpdate, light, linkTo, NavigateTo, placeholderData, t
             close: 20
         }
     ]
+    //echarts 设置
     const options = {
         legend: { display: false }
     }
+    //echarts 数据
     const chartData = {
         labels: data.map(item => format(parse(item.time * 1000), 'MMM D H:m A')),
         datasets: [
