@@ -21,7 +21,6 @@ import { Line } from 'react-chartjs-2'
 const { Header, Footer, Content } = Layout
 
 const Page = ({lastUpdate, light, placeholderData, title}) => {
-    console.log(placeholderData)
     const data = [
         {
             time: 1540347324,

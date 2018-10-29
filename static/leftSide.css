@@ -1,0 +1,13 @@
+/**
+ * @author: sunyf-c@glodon.com
+ * @description: 
+ * @summary:
+ * @todo: 2018/10/24
+ */
+ 
+.leftSide{
+    padding: 20px;
+}
+.leftSide .ant-layout-sider{
+    background-color: #ffffff;
+}

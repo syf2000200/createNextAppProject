@@ -10,10 +10,11 @@ import {connect} from 'react-redux'
 
 import { List, Layout } from 'antd'
 
+import '../static/leftSide.css'
+
 const { Sider } = Layout
 
 const LeftSide = ({error, placeholderData}) => {
-    console.log(placeholderData)
     return (
         <div className="leftSide">
             <Sider>

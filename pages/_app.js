@@ -13,12 +13,9 @@ import withReduxSaga from 'next-redux-saga'
 
 import createStore from '../store'
 
-import Head from '../components/head'
-
 class MyApp extends App {
     static async getInitialProps ({ Component, ctx }) {
         let pageProps = {}
-        console.log(ctx)
 
         if (Component.getInitialProps) {
             pageProps = await Component.getInitialProps({ ctx })
@@ -31,7 +28,6 @@ class MyApp extends App {
         const { Component, pageProps, store } = this.props
         return (
             <Container>
-                <Head/>
                 <Provider store={store}>
                     <Component {...pageProps} />
                 </Provider>
