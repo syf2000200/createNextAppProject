@@ -7,7 +7,6 @@
 
 import React from 'react'
 import Link from 'next/link'
-import Head from 'next/head'
 import fetch from 'isomorphic-unfetch'
 
 export default class extends React.Component{

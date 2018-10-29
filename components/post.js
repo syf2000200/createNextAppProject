@@ -8,7 +8,6 @@
 import Link from 'next/link'
 
 export default props => {
-    console.log(props)
     return (
         <article>
             <h2>{props.title}</h2>
